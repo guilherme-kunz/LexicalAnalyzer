@@ -9,7 +9,7 @@ public class GenerateLexicalAnalyzer {
         String rootPath = Paths.get("").toAbsolutePath().toString();
         String subPath = "/src/main/java/src/";
 
-        String[] file = {rootPath + subPath + "src/scanner.lex"};
+        String[] file = {rootPath + subPath + "scanner.lex"};
 
         jflex.Main.main(file);
 
