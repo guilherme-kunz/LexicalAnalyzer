@@ -15,8 +15,8 @@ package src;
 INT = 0|[1-9][0-9]*
 FLOAT = 0.0|[1.0-9.0][0.0-9.0]*
 CHAR = [a-z|A-Z][a-z|A-Z]*
-BOOLT = "true"
-BOOLF = "false"
+BOOLT = "verdadeiro"
+BOOLF = "falso"
 TEXT = [a-z|A-Z][a-z|A-Z]*
 ASSIGMENT = ":="
 SUM = "+"
@@ -32,6 +32,15 @@ GREATEREQUAL = ">="
 LESSEREQUAL = "<="
 DIAMOND = "<>"
 ID = [_|a-z|A-Z][a-z|A-Z|0-9_]*
+OPENPARENTHESES = "("
+CLOSEPARENTHESES = ")"
+OPENSQUAREBRACKETS = "["
+CLOSESQUAREBRACKETS = "]"
+TWOPOINTS = ":"
+SHARP= "#"
+POINT= "."
+SEMICOLON= ";"
+DENIAL= "!"
 
 %%
 
@@ -70,5 +79,36 @@ ID = [_|a-z|A-Z][a-z|A-Z|0-9_]*
 "begin"			{print("definição de inicio de bloco ", yytext());}
 "end"			{print("definição de fim de bloco ", yytext());}
 {ID}		{print("Identificador ", yytext());}
+"while"			{print("repetição (teste no inicio) ", yytext());}
+"case"			{print("estrutura condicional aninhada ", yytext());}
+"of"			{print("estrutura condicional aninhada ", yytext());}
+{OPENPARENTHESES}		{print("p1 ", yytext());}
+{CLOSEPARENTHESES}		{print("f1 ", yytext());}
+{OPENSQUAREBRACKETS}		{print("p2 ", yytext());}
+{CLOSESQUAREBRACKETS}		{print("f2 ", yytext());}
+"ratix"			{print("outros tokens ", yytext());}
+"logarithm"			{print("outros tokens ", yytext());}
+"parse"			{print("outros tokens ", yytext());}
+"shift"			{print("outros tokens ", yytext());}
+"var"			{print("outros tokens ", yytext());}
+"const"			{print("outros tokens ", yytext());}
+{TWOPOINTS}		{print("f2 ", yytext());}
+"main"			{print("outros tokens ", yytext());}
+"return"			{print("outros tokens ", yytext());}
+"pause"			{print("outros tokens ", yytext());}
+"sleep"			{print("outros tokens ", yytext());}
+"include"			{print("outros tokens ", yytext());}
+"define"			{print("outros tokens ", yytext());}
+"endline"			{print("outros tokens ", yytext());}
+{SHARP}		{print("outros tokens ", yytext());}
+"break"			{print("outros tokens ", yytext());}
+"continue"			{print("outros tokens ", yytext());}
+"random"			{print("outros tokens ", yytext());}
+"file"			{print("outros tokens ", yytext());}
+"true"			{print("outros tokens ", yytext());}
+"false"			{print("outros tokens ", yytext());}
+{POINT}		{print("outros tokens ", yytext());}
+{SEMICOLON}		{print("outros tokens ", yytext());}
+{DENIAL}		{print("token de negação ", yytext());}
 
 . { throw new RuntimeException("Invalid character " + yytext()); }
